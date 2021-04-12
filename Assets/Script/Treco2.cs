@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Treco2 : MonoBehaviour
 {
-    public GameObject treco2;
     public GameObject fundo;
 
     // Start is called before the first frame update
@@ -21,7 +20,6 @@ public class Treco2 : MonoBehaviour
 
     void ActiveTreco2()
     {
-        treco2.SetActive(true);
         fundo.SetActive(true);
     }
 }
