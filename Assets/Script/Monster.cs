@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
     List<MonsterInfo> monsters = new List<MonsterInfo>();
     int index = 0;
     SpriteRenderer spriteRenderer;
+
+    public Text Artista;
+    public Text Alien;
+    public Text Artista_sombra;
+    public Text Alien_sombra;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +30,7 @@ public class Monster : MonoBehaviour
 
     void fillList()
     {
-        monsters.Add(new MonsterInfo("AlienX", Resources.Load<Sprite>("monstros/AlienX_@ncrwly"), "@ncrwly"));
+        //monsters.Add(new MonsterInfo("AlienX", Resources.Load<Sprite>("monstros/AlienX_@ncrwly"), "@ncrwly"));
         monsters.Add(new MonsterInfo("Ameaça Aquatica", Resources.Load<Sprite>("monstros/Ameaça aquatica_@desenhai"), "@desenhai"));
         monsters.Add(new MonsterInfo("Aquatico", Resources.Load<Sprite>("monstros/Aquático_@abyssbreno"), "@abyssbreno"));
         monsters.Add(new MonsterInfo("Arraia a Jato", Resources.Load<Sprite>("monstros/Arraia a jato_@tavisko"), "@tavisko"));
@@ -45,6 +51,11 @@ public class Monster : MonoBehaviour
     public void redrawn()
     {
         spriteRenderer.sprite = monsters[index].image;
+        Artista.text = monsters[index].artist;
+        Artista_sombra.text = monsters[index].artist;
+        Alien.text = monsters[index].name;
+        Alien_sombra.text = monsters[index].name;
+
     }
 
     public void next()

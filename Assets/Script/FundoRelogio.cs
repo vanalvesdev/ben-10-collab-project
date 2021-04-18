@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FundoRelogio : MonoBehaviour
 {
-
+    public GameObject texto_relogio;
     public GameObject monstro;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class FundoRelogio : MonoBehaviour
 
     void ActiveMonster()
     {
+        texto_relogio.SetActive(true);
         monstro.SetActive(true);
     }
 }
