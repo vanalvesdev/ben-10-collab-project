@@ -13,12 +13,14 @@ public class Monster : MonoBehaviour
     public Text Alien;
     public Text Artista_sombra;
     public Text Alien_sombra;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         fillList();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         redrawn();
     }
 
@@ -30,7 +32,6 @@ public class Monster : MonoBehaviour
 
     void fillList()
     {
-        //monsters.Add(new MonsterInfo("AlienX", Resources.Load<Sprite>("monstros/AlienX_@ncrwly"), "@ncrwly"));
         monsters.Add(new MonsterInfo("Ameaça Aquatica", Resources.Load<Sprite>("monstros/Ameaça aquatica_@desenhai"), "@desenhai"));
         monsters.Add(new MonsterInfo("Aquatico", Resources.Load<Sprite>("monstros/Aquático_@abyssbreno"), "@abyssbreno"));
         monsters.Add(new MonsterInfo("Arraia a Jato", Resources.Load<Sprite>("monstros/Arraia a jato_@tavisko"), "@tavisko"));
@@ -46,6 +47,11 @@ public class Monster : MonoBehaviour
         monsters.Add(new MonsterInfo("Quatro Braços", Resources.Load<Sprite>("monstros/Quatro Braços_@elruditos"), "@elruditos"));
         monsters.Add(new MonsterInfo("ReinrassicIII_", Resources.Load<Sprite>("monstros/ReinrassicIII_@gabijacques.art"), "@gabijacques.art"));
         monsters.Add(new MonsterInfo("Zombozo", Resources.Load<Sprite>("monstros/zombozo_@henrikscarts"), "@henrikscarts"));
+        monsters.Add(new MonsterInfo("Rath", Resources.Load<Sprite>("monstros/Rath_@saruzilla"), "@saruzilla"));
+        monsters.Add(new MonsterInfo("Rook Blonko", Resources.Load<Sprite>("monstros/Rook Blonko @fubukiiast"), "@fubukiiast"));
+        monsters.Add(new MonsterInfo("Ultimos", Resources.Load<Sprite>("monstros/ultimos_@cabeloneto1"), "@cabeloneto1"));
+        monsters.Add(new MonsterInfo("Eco Eco Supremo", Resources.Load<Sprite>("monstros/frame1"), "@joaoguiss05", true, "ecoeco"));
+        monsters.Add(new MonsterInfo("Alien X", Resources.Load<Sprite>("monstros/Frame 1 (Alien X - @ncrwly)"), "@ncrwly", true, "alienx"));
     }
 
     public void redrawn()
@@ -56,6 +62,20 @@ public class Monster : MonoBehaviour
         Alien.text = monsters[index].name;
         Alien_sombra.text = monsters[index].name;
 
+        animator.enabled = monsters[index].enableAnimator;
+        animator.Rebind();
+
+        if (monsters[index].enableAnimator)
+        {
+            animator.SetTrigger(monsters[index].animationTrigger);
+            Debug.Log("Animation Trigger "+ monsters[index].animationTrigger);
+        }
+    }
+
+    void resetTriggers()
+    {
+        animator.ResetTrigger("ecoeco");
+        animator.ResetTrigger("alienx");
     }
 
     public void next()
@@ -77,12 +97,24 @@ public class Monster : MonoBehaviour
         public string name;
         public Sprite image;
         public string artist;
+        public bool enableAnimator;
+        public string animationTrigger;
 
        public MonsterInfo(string _name, Sprite _image, string _artist)
         {
             name = _name;
             image = _image;
             artist = _artist;
+            enableAnimator = false;
+        }
+
+        public MonsterInfo(string _name, Sprite _image, string _artist, bool _enableAnimator, string _animationTrigger)
+        {
+            name = _name;
+            image = _image;
+            artist = _artist;
+            enableAnimator = _enableAnimator;
+            animationTrigger = _animationTrigger;
         }
     }
 }
