@@ -63,19 +63,19 @@ public class Monster : MonoBehaviour
         Alien_sombra.text = monsters[index].name;
 
         animator.enabled = monsters[index].enableAnimator;
-        animator.Rebind();
 
         if (monsters[index].enableAnimator)
         {
-            animator.SetTrigger(monsters[index].animationTrigger);
+            resetTriggers();
+            animator.SetBool(monsters[index].animationTrigger, true);
             Debug.Log("Animation Trigger "+ monsters[index].animationTrigger);
         }
     }
 
     void resetTriggers()
     {
-        animator.ResetTrigger("ecoeco");
-        animator.ResetTrigger("alienx");
+        animator.SetBool("ecoeco", false);
+        animator.SetBool("alienx", false);
     }
 
     public void next()
