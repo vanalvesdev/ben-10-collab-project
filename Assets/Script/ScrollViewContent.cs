@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UI.Button;
@@ -7,13 +8,14 @@ using static UnityEngine.UI.Button;
 public class ScrollViewContent : MonoBehaviour
 {
     public GameObject buttonPrefab;
-    public List<string> listaMonsterName;
     public List<GameObject> contents;
+    public Monster monsterScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        monsterScript = FindObjectOfType<Monster>();
+        fillContent(monsterScript.monsters.Select(a => a.name).ToList());
     }
 
     // Update is called once per frame
@@ -24,12 +26,11 @@ public class ScrollViewContent : MonoBehaviour
 
     public void fillContent(List<string> lista)
     {
-        listaMonsterName = lista;
-        for (int i = 0; i < listaMonsterName.Count; i++)
+        for (int i = 0; i < lista.Count; i++)
         {
             GameObject button = Instantiate(buttonPrefab, this.transform);
             contents.Add(button);
-            button.GetComponentInChildren<Text>().text = listaMonsterName[i];
+            button.GetComponentInChildren<Text>().text = lista[i];
             button.GetComponent<Button>().onClick.AddListener(delegate { ButtonClicked(contents.IndexOf(button)); });
         }
     }
@@ -37,5 +38,6 @@ public class ScrollViewContent : MonoBehaviour
     void ButtonClicked(int index)
     {
         Debug.Log("Button "+index+" was clicked");
+        monsterScript.jumpTo(index);
     }
 }

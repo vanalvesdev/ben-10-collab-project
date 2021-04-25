@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
-    List<MonsterInfo> monsters = new List<MonsterInfo>();
+    public List<MonsterInfo> monsters = new List<MonsterInfo>();
     int index = 0;
     SpriteRenderer spriteRenderer;
 
@@ -15,12 +15,15 @@ public class Monster : MonoBehaviour
     public Text Artista_sombra;
     public Text Alien_sombra;
     public Animator animator;
-    public ScrollViewContent scrollView;
+
+    void Awake()
+    {
+        fillList();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        fillList();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         redrawn();
@@ -54,7 +57,6 @@ public class Monster : MonoBehaviour
         monsters.Add(new MonsterInfo("Ultimos", Resources.Load<Sprite>("monstros/ultimos_@cabeloneto1"), "@cabeloneto1"));
         monsters.Add(new MonsterInfo("Eco Eco Supremo", Resources.Load<Sprite>("monstros/frame1"), "@joaoguiss05", true, "ecoeco"));
         monsters.Add(new MonsterInfo("Alien X", Resources.Load<Sprite>("monstros/Frame 1 (Alien X - @ncrwly)"), "@ncrwly", true, "alienx"));
-        scrollView.fillContent(monsters.Select(a => a.name).ToList());
     }
 
     public void redrawn()
@@ -92,6 +94,12 @@ public class Monster : MonoBehaviour
     {
         index--;
         if (index < 0) index = monsters.Count - 1;
+        redrawn();
+    }
+
+    public void jumpTo(int _index)
+    {
+        index = _index;
         redrawn();
     }
 
