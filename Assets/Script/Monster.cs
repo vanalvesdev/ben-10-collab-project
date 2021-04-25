@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class Monster : MonoBehaviour
     public Text Artista_sombra;
     public Text Alien_sombra;
     public Animator animator;
+    public ScrollViewContent scrollView;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,7 @@ public class Monster : MonoBehaviour
         monsters.Add(new MonsterInfo("Ultimos", Resources.Load<Sprite>("monstros/ultimos_@cabeloneto1"), "@cabeloneto1"));
         monsters.Add(new MonsterInfo("Eco Eco Supremo", Resources.Load<Sprite>("monstros/frame1"), "@joaoguiss05", true, "ecoeco"));
         monsters.Add(new MonsterInfo("Alien X", Resources.Load<Sprite>("monstros/Frame 1 (Alien X - @ncrwly)"), "@ncrwly", true, "alienx"));
+        scrollView.fillContent(monsters.Select(a => a.name).ToList());
     }
 
     public void redrawn()
