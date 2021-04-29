@@ -12,8 +12,6 @@ public class Monster : MonoBehaviour
 
     public Text Artista;
     public Text Alien;
-    public Text Artista_sombra;
-    public Text Alien_sombra;
     public Animator animator;
 
     void Awake()
@@ -63,9 +61,7 @@ public class Monster : MonoBehaviour
     {
         spriteRenderer.sprite = monsters[index].image;
         Artista.text = monsters[index].artist;
-        Artista_sombra.text = monsters[index].artist;
         Alien.text = monsters[index].name;
-        Alien_sombra.text = monsters[index].name;
 
         animator.enabled = monsters[index].enableAnimator;
 
