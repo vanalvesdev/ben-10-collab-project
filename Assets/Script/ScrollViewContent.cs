@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.UI.Button;
 
 public class ScrollViewContent : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public List<GameObject> contents;
-    public Monster monsterScript;
+    public ViewContentElement element;
 
     // Start is called before the first frame update
     void Start()
     {
-        monsterScript = FindObjectOfType<Monster>();
-        fillContent(monsterScript.monsters.Select(a => a.name).ToList());
+        element = FindObjectsOfType<MonoBehaviour>().OfType<ViewContentElement>().First();
+        fillContent(element.getNameList());
     }
 
     // Update is called once per frame
@@ -38,6 +37,6 @@ public class ScrollViewContent : MonoBehaviour
     void ButtonClicked(int index)
     {
         Debug.Log("Button "+index+" was clicked");
-        monsterScript.jumpTo(index);
+        element.jumpTo(index);
     }
 }

@@ -6,7 +6,8 @@ public class papeltransicao : MonoBehaviour
 {
     public GameObject prefab;
     Animator animator;
-    
+    public GameObject alien;
+    public GameObject artist;
     
 
     void Start()
@@ -20,16 +21,21 @@ public class papeltransicao : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            animator.SetTrigger("transicao");
-            
+            transicao();
+            GetComponentInChildren<Character>().previous();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            animator.SetTrigger("transicao");
-            
+            transicao();
+            GetComponentInChildren<Character>().next();
         }
-    } 
+    }
+
+    public void transicao()
+    {
+        animator.SetTrigger("transicao");
+    }
 
     public void duplicate()
     {
@@ -41,5 +47,17 @@ public class papeltransicao : MonoBehaviour
     {
         Debug.Log("Destroy");
         Destroy(gameObject);
+    }
+
+    public void hideText()
+    {
+        alien.SetActive(false);
+        artist.SetActive(false);
+    }
+
+    public void showText()
+    {
+        alien.SetActive(true);
+        artist.SetActive(true);
     }
 }

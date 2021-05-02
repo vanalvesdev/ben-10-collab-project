@@ -20,7 +20,6 @@ public class Character : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         pasta = GameObject.FindObjectOfType<Pasta>();
         redrawn();
-        Debug.Log(pasta);
     }
 
     // Update is called once per frame
@@ -40,7 +39,13 @@ public class Character : MonoBehaviour
 
     }
 
+    public void next()
+    {
+        pasta.next();
+    }
 
-
-
+    public void previous()
+    {
+        pasta.previous();
+    }
 }

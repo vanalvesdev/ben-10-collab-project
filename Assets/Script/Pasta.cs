@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class Pasta : MonoBehaviour
+public class Pasta : MonoBehaviour, ViewContentElement
 {
     public List<CharactersInfo> characters = new List<CharactersInfo>();
     int index = 0;
@@ -47,6 +49,11 @@ public class Pasta : MonoBehaviour
         characters.Add(new CharactersInfo("Zs'Skayr", Resources.Load<Sprite>("monstros/Zs_Skayr @rosa_lucasrosa"), "@rosa_lucasrosa"));
     }
 
+    public List<string> getNameList()
+    {
+        return characters.Select(a => a.name).ToList();
+    }
+
     void Awake()
     {
         fillList();
@@ -67,6 +74,7 @@ public class Pasta : MonoBehaviour
     public void jumpTo(int _index)
     {
         index = _index;
+        GameObject.FindGameObjectWithTag("Papel").GetComponent<papeltransicao>().transicao();
     }
 
     public CharactersInfo getcurrentcharacter()

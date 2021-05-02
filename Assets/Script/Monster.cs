@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, ViewContentElement
 {
     public List<MonsterInfo> monsters = new List<MonsterInfo>();
     int index = 0;
@@ -159,6 +159,11 @@ public class Monster : MonoBehaviour
     {
         index = _index;
         redrawn();
+    }
+
+    public List<string> getNameList()
+    {
+        return monsters.Select(a => a.name).ToList();
     }
 
     public class MonsterInfo
