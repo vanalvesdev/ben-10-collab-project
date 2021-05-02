@@ -80,7 +80,7 @@ public class Monster : MonoBehaviour
         monsters.Add(new MonsterInfo("Ultra-T", Resources.Load<Sprite>("monstros/ultrat_@atmocubo"), "@atmocubo"));
         monsters.Add(new MonsterInfo("XLR8", Resources.Load<Sprite>("monstros/XLR8_@filipe.emerson"), "@filipe.emerson"));
         monsters.Add(new MonsterInfo("Diamante", Resources.Load<Sprite>("monstros/Ben 10 - Diamante1"), "@opacamilos", true, "diamante"));
-        monsters.Add(new MonsterInfo("Bala de Canhão", Resources.Load<Sprite>("monstros/benio0001"), "@fhilipemarmori", true, "baladecanhão"));
+        monsters.Add(new MonsterInfo("Bala de Canhão", Resources.Load<Sprite>("monstros/benio0001"), "@fhilipemarmori", true, "baladecanhao"));
         monsters.Add(new MonsterInfo("Cromático", Resources.Load<Sprite>("monstros/cromatico__aluzearte"), "@aluzearte"));
         monsters.Add(new MonsterInfo("Diabrete", Resources.Load<Sprite>("monstros/diabrete_@kaynamelloh"), "@kaynamelloh"));
         monsters.Add(new MonsterInfo("Diamante (Gwen)", Resources.Load<Sprite>("monstros/diamanta_@tssketch"), "@tssketch"));
@@ -112,6 +112,9 @@ public class Monster : MonoBehaviour
         monsters.Add(new MonsterInfo("Azmuth", Resources.Load<Sprite>("monstros/Azmuth_@lkv_7f"), "@lkv_7f"));
         monsters.Add(new MonsterInfo("Ishyiama", Resources.Load<Sprite>("monstros/ishyiama@nathsenaart"), "@nathsenaart"));
         monsters.Add(new MonsterInfo("Vilgax", Resources.Load<Sprite>("monstros/vilgax_@fpjuni"), "@fpjuni"));
+        monsters.Add(new MonsterInfo("Raff", Resources.Load<Sprite>("monstros/Raff_@auntkey.art"), "@auntkey.art"));
+        monsters.Add(new MonsterInfo("Skurd", Resources.Load<Sprite>("monstros/Skurd@rafaccaldas"), "@rafaccaldas"));
+        monsters.Add(new MonsterInfo("Zs'Skayr", Resources.Load<Sprite>("monstros/Zs_Skayr @rosa_lucasrosa"), "@rosa_lucasrosa"));
     }
 
     public void redrawn()
@@ -135,7 +138,7 @@ public class Monster : MonoBehaviour
         animator.SetBool("ecoeco", false);
         animator.SetBool("alienx", false);
         animator.SetBool("diamante", false);
-        animator.SetBool("baladecanhão", false);
+        animator.SetBool("baladecanhao", false);
     }
 
     public void next()
